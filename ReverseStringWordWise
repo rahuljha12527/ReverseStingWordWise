@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+int length(char input[]){
+    int counter=0;
+    for(int i=0;input[i]!='\0';i++){
+        counter++;
+    }
+    
+    return counter;
+}
+
+void reverseStringWordWise(char input[]){
+   int len=length(input);
+    int i=0;
+    int j=len-1;
+     while(i<j){
+       int temp=input[j];
+       input[j]=input[i];
+       input[i]=temp;
+       i++;
+       j--;
+    }
+    
+     int wordStart=0;
+     int wordEnd=0;
+    for(int i=0;i<=len;i++){
+    
+     
+     if(input[i]==' ' || input[i]=='\0'){
+         wordEnd=i-1;
+        int startIndex=wordStart;
+        int endIndex=wordEnd;
+        
+        while(startIndex<endIndex){
+            char temp=input[startIndex];
+            input[startIndex]=input[endIndex];
+            input[endIndex]=temp;
+            startIndex++;
+            endIndex--;
+        }
+        
+        wordStart=i+1;
+    }
+}
+}
+
+
+int main() {
+    char input[1000];
+    cin.getline(input, 1000);
+    reverseStringWordWise(input);
+    cout << input << endl;
+}
